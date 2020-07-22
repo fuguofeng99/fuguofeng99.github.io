@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="符国锋">
+  <meta name="keywords" content="">
+  <title>Hexo 博客框架的安装与注意事项 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-12 00:00" pubdate>
+      2020年7月12日 凌晨
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Hexo 博客框架的安装与注意事项</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="Hexo-博客框架的安装与注意事项"><a href="#Hexo-博客框架的安装与注意事项" class="headerlink" title="Hexo 博客框架的安装与注意事项"></a>Hexo 博客框架的安装与注意事项</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1382587380&auto=0&height=66"></iframe>
+
+<p>前言：这是第一次使用Hexo博客框架来记录自己的学习历程，但在安装Hexo的过程中也遇到了不少的问题，踩了不少的坑，现在就将遇到的问题梳理。  </p>
+<p>配置环境：windos10  </p>
+<p>需要提前下好Git和node.js(因为Hexo是基于node.js的静态博客框架)</p>
+<hr>
+<h3 id="Hexo博客安装流程"><a href="#Hexo博客安装流程" class="headerlink" title="Hexo博客安装流程"></a>Hexo博客安装流程</h3><ol>
+<li>git的安装</li>
+<li>node的安装</li>
+<li>安装Hexo</li>
+<li>GitHub上创建仓库</li>
+<li>将Hexo远程部署在gitHub上</li>
+<li>发布文章</li>
+</ol>
+<h4 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h4><p>windows系统直接可以上<a href="https://git-scm.com" target="_blank" rel="noopener">git官网</a>上下载,选择对应系统的资源安装即可。 </p>
+<blockquote>
+<p>git –version //查看git的版本</p>
+</blockquote>
+<h4 id="node的安装"><a href="#node的安装" class="headerlink" title="node的安装"></a>node的安装</h4><p>windos也可以上<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node官网</a>上下载LTS版，安装好后使用node -v就可以查看版本，node也会自动配置在环境变量中，如果没有就需要自己手动添加，新版nodejs里集成了npm，只要nodejs安装成功，npm也应该安装成功，在cmd中输入npm -v，即可查看到npm的版本号。再介绍下npm，这是一个包管理器，接下来的安装都和这个命令有关，但由于众所周知的原因，国内速度很慢，所以我们进行一个镜像源更改，改到淘宝的源，利用npm安装一个cnpm包管理器。</p>
+<blockquote>
+<p>node -v //查看node版本</p>
+<p>npm -v //查看npm版本</p>
+<p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> //替换到国内淘宝的源</p>
+</blockquote>
+<h4 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h4><p>做好了上述工作后就可以安装Hexo框架，以下命令安装</p>
+<blockquote>
+<p>cnpm install -g hexo-cli  //安装hexo</p>
+</blockquote>
+<p>安装好了后使用hexo -v命令就可以查看hexo的信息</p>
+<p><img src="hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/hexo-v.PNG" srcset="/img/loading.gif" alt="hexo信息"></p>
+<p>这里我遇到了第一个问题，hexo框架安装成功后，却使用不了hexo 的指令，问题可能是你是在输入安装指令的时候把 “-g”漏了，”-g”的作用是把hexo的相关指令配置成全局变量，进行全局安装，这种情况重新安装即可，注意这里安装的hexo是需要管理员权限，可以去运行C:Windos\System32下的cmd.exe文件即可。还有另外一种情况是配置指令是正确的，但是就是运行不了，我的就是后一种，这个问题也是十分的罕见，我游览了许多博主的博客，大多数都是解释第一种到问题。我晕:sweat:，好在经过2个小时的尝试，我意识到hexo是依赖于nodejs，于是通过命令窗口行来到安装node根目录下，输入了hexo安装指令了，终于成功了:smile:。</p>
+<p>接下来，选择一个盘新建一个文件夹，取名为blog,然后终端进入这个blog文件夹，运行以下命令初始化</p>
+<blockquote>
+<p>hexo init //初始化博客</p>
+</blockquote>
+<p>初始化后，blog下会有生成的文件，如下图</p>
+<p><img src="hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/hexo.PNG" srcset="/img/loading.gif" alt="hexo目录下的文件"></p>
+<p>接下来就是启动hexo博客了，运行以下命令，然后在你的浏览器中输入 localhost:4000，这个命令默认的是使用4000端口，如果没有错误的话，你可以使用 localhost:4000 在你的浏览器中预览你的博客。</p>
+<blockquote>
+<p>hexo s //启动博客</p>
+</blockquote>
+<p><img src="/blog%E7%95%8C%E9%9D%A2.PNG" srcset="/img/loading.gif" alt="本地blog界面"></p>
+<p>这里我更改了hexo的主题，使用了 hexo 主题中比较热门的yilia，下载的地址在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo Themes</a>大家可以在网上找到自己喜欢的主题。关于如何修改主题，首先将下载好的资源放在blog目录下的themes文件夹，然后修改根目录中的_config.yml文件内容（如下），将theme 修改为你资源的文件夹名，保存。</p>
+<p><img src="./hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9.PNG" srcset="/img/loading.gif" alt="主题修改"></p>
+<p>接着命令行窗口到blog的更目录下使用三行命令</p>
+<blockquote>
+<p>hexo clean //清除服务器上的缓冲数据</p>
+<p>hexo g //重新部署服务器</p>
+<p>hexo //启动服务器</p>
+</blockquote>
+<p>这样就修改好主题了。</p>
+<h4 id="github上创建仓库"><a href="#github上创建仓库" class="headerlink" title="github上创建仓库"></a>github上创建仓库</h4><p>首先需要自己去注册github账号，然后在右上角点击加号按钮，如下图</p>
+<p><img src="hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA.PNG" srcset="/img/loading.gif" alt="仓库创建"></p>
+<p>选择”New repository”</p>
+<p><img src="./hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA2.PNG" srcset="/img/loading.gif" alt="仓库创建2"></p>
+<p>输入仓库名，一般是所属者+.githtub+.io,我这是已经存在了这个仓库了所以系统会提示你仓库名已存在，你可自己更改，这样后期就可以直接输入这个仓库名进入自己的博客了。</p>
+<h4 id="将Hexo远程部署在gitHub上"><a href="#将Hexo远程部署在gitHub上" class="headerlink" title="将Hexo远程部署在gitHub上"></a>将Hexo远程部署在gitHub上</h4><p>做好以上准备就可以进行部署了，首先需要去blog目录下找到_config.yml文件，编辑打开。找到deploy字段添加下列信息：</p>
+<p><img src="./hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/%E4%BF%AE%E6%94%B9%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80.PNG" srcset="/img/loading.gif" alt="部署地址修改"></p>
+<p>注意这里有一个小坑，type、repo、branch 后面都有一个空格，如果没有，在使用hexo -g指令生产静态文件时会报错。repo 是你的仓库的网路地址，在你的仓库页面点击”code”按钮就可以得到（默认生产的仓库是没有文件的），复制到repo 后面，记住要加空格。</p>
+<p><img src="./hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6/copypath.PNG" srcset="/img/loading.gif" alt="复制地址"></p>
+<p>这里repo 使用的HTTPS 网路协议,你也可以使用SSH协议 ,点击”Use SSH”，就可以了。branch 不写也会默认指定master。保存，关闭。</p>
+<p>使用命令窗口界面来到blog 下，hexo g生产静态文件，hexo d远程部署。</p>
+<blockquote>
+<p>hexo g</p>
+<p>hexo d//远程部署</p>
+</blockquote>
+<p><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1594730246&di=8a0241ca15a3191dbd62f7846ff42bb4&src=http://a3.att.hudong.com/14/75/01300000164186121366756803686.jpg" srcset="/img/loading.gif" alt=" 网络图片"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/18/Mybaits%E6%A1%86%E6%9E%B6%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mybaits框架的学习总结一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"风流当歌","artist":"上河Lin / 回川组 / 人间诗话组/等","url":"/music/风流当歌.mp3","cover":"/img/feng.jpg"},{"name":"吹梦到西洲","artist":"黄诗扶/妖扬","url":"/music/吹梦到西洲.mp3","cover":"/img/chui.png"}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+<p id="hitokoto" style="font-size:20px,font-color:yellow">:D 获取中...</p>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto')
+      hitokoto.innerText = data.hitokoto
+      })
+      .catch(console.error)
+</script>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Hexo 博客框架的安装与注意事项&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/node_modules/live2d-widget-model-wanko/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

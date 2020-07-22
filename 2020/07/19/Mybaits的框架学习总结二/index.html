@@ -1,0 +1,685 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="符国锋">
+  <meta name="keywords" content="">
+  <title>Mybaits的框架学习总结二 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-19 20:31" pubdate>
+      2020年7月19日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Mybaits的框架学习总结二</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h5 id="查询语句参数的传入"><a href="#查询语句参数的传入" class="headerlink" title="查询语句参数的传入"></a>查询语句参数的传入</h5><ol>
+<li><p>方法一</p>
+<p>首先在接口中定义方法，映射文件中提供对应的标签。 此时, SQL 语句中获取方式有两种，通过#{param+数字}和#{arg+数字}的方式。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"selectuser"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span><span class="hljs-comment">&lt;!--在核心配置文件中使用typeAlias，取了别名，这里直接用user--&gt;</span>
+select * from t_user2 where uname=#&#123;arg0&#125; and pwd = #&#123;arg1&#125;
+select * from t_user2 where uname=#&#123;param1&#125; and pwd = #&#123;param2&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+</li>
+<li><p>方法二</p>
+<p> 接口中定义方法，参数中使用@Param 注解设定参数名用于在 SQL 语句中使用。@Param后面是sql中使用的别名。映射文件中提供对应的标签。 SQL 语句中获取方式有两种, 通过#{参数名称}或#{param+数字}的方式。</p>
+</li>
+<li><p>参数个数的查询</p>
+<ul>
+<li><p>一个参数时，#{}中可以任意填写。</p>
+</li>
+<li><p>多个参数的查询，多个参数传递时，由于 sqlSession 中提供的查询方法只允许传入一个参数，因此可以对多个参数进行封装，可以使用对象或 Map 集合。</p>
+<pre><code class="hljs **public">UserMapper mapper;
+public TestBatis() throws IOException &#123;
+&#x2F;&#x2F;加载mybatis的核心配置文件applicationContext-dao.xml,注意配置文件要放在src目录下
+Reader in &#x3D; Resources.*getResourceAsReader(&quot;applicationContext-dao.xml&quot;);
+&#x2F;&#x2F;通过配置文件构建工厂类
+SqlSessionFactory factory &#x3D; new SqlSessionFactoryBuilder().build(in);
+&#x2F;&#x2F;通过工厂类创建发送sql语句的session对象,默认事务的提交是手动的
+SqlSession session &#x3D; factory.openSession();
+mapper &#x3D; session.getMapper(UserMapper.class);
+	&#125;
+&#125;</code></pre>
+
+<p>接口中</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">selByMap</span><span class="hljs-params">(Map&lt;String,String&gt; map)</span></span>;</code></pre>
+
+<p>映射文件中</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"selByMap"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span>
+    select * from t_user2 where uname=#&#123;name&#125; and pwd = #&#123;pwd&#125;  <span class="hljs-comment">&lt;!--取map集合中的key的名字--&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+<p>测试程序代码：</p>
+<pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">selByMap</span><span class="hljs-params">()</span></span>&#123;
+    <span class="hljs-comment">//加载mybatis的核心配置文件applicationContext-dao.xml,注意配置文件要放在src目录下</span>
+    Reader in = Resources.getResourceAsReader(<span class="hljs-string">"applicationContext-dao.xml"</span>);
+    <span class="hljs-comment">//通过配置文件构建工厂类</span>
+    SqlSessionFactory factory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(in);
+    <span class="hljs-comment">//通过工厂类创建发送sql语句的session对象,默认事务的提交是手动的</span>
+    SqlSession session = factory.openSession();
+    UserMapper mapper = session.getMapper(UserMapper<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    Map&lt;String,String&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    map.put(<span class="hljs-string">"name"</span>,<span class="hljs-string">"曹操"</span>); <span class="hljs-comment">//key的名字随便取</span>
+    map.put(<span class="hljs-string">"pwd"</span>,<span class="hljs-string">"123456"</span>);
+    User user = mapper.selByMap(map);
+    System.out.println(user);
+    session.commit();<span class="hljs-comment">//手动提交</span>
+    session.close();<span class="hljs-comment">//关闭流</span>
+&#125;</code></pre>
+
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="inser新增语句"><a href="#inser新增语句" class="headerlink" title="inser新增语句"></a>inser新增语句</h5><p>在mapper 文件中， 通过<insert>定义新增语句。注意， 由于 DML 操作的返回值都是 int 类型 ， 所以 ， 不需要定义 resultType 属性。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"adduser"</span>&gt;</span>
+	insert into usertable values(seq_user_uid.nextval,#&#123;uname&#125;,#&#123;pwd&#125;,#&#123;spower&#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span></code></pre>
+
+<h5 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h5><p>与上述insert语句类似，通过<delete>定义语句，同样不需要写resultType。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">delete</span>&gt;</span>
+	delete from t_user2 where uname = #&#123;uname&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span></code></pre>
+
+<h5 id="修改语句"><a href="#修改语句" class="headerlink" title="修改语句"></a>修改语句</h5><p>修改语句的情况比上述的新增，删除麻烦许多，如果你是每次修改都是将所有属性进行修改， 那就跟上述的新增的操作一样。可我要是只想修改某一个属性，而且想要修改属性的个数和种类不确定，这样的需求下，我们就使用动态的sql语句。</p>
+<h5 id="动态SQL语句"><a href="#动态SQL语句" class="headerlink" title="动态SQL语句"></a>动态SQL语句</h5><p>根据条件的不同， SQL 语句也会随之动态的改变。MyBatis 中，提供了一组标签用于实现动态 SQL。</p>
+<ol>
+<li><if> 用于进行条件判断，test 属性用于指定判断条件。 为了拼接条件， 在 SQL 语句后强行添加 1=1 的恒成立条件。</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"com.batis.mapper.UserMapper"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"selBy"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span>
+        select * from t_user2 where 1=1
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"uname != null and uname != ''"</span>&gt;</span>
+            and uname = #&#123;uname&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"pwd !=null and pwd !=''"</span>&gt;</span>
+            and pwd = #&#123;pwd&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"sid != 0"</span>&gt;</span>
+            and sid = #&#123;sid&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span></code></pre>
+
+<ol start="2">
+<li><where> 如果没有条件，不会生成 where 关键字，如果符合条件， 会自动添加 where 关键字，多个条件符合时会添加and。</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"selBy2"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span>
+    select * from t_user2
+    <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span>   <span class="hljs-comment">&lt;!--如果后面if中有一个成立,会自动加上where,如果都不成立,忽略where--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"uname != null and uname != ''"</span>&gt;</span>
+            and uname = #&#123;uname&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"pwd !=null and pwd !=''"</span>&gt;</span>
+            and pwd = #&#123;pwd&#125;s
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"sid != 0"</span>&gt;</span>
+            and sid = #&#123;sid&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+<ol start="3">
+<li><choose><when><otherwise>就跟switch…case…差不多，符合哪种条件就拼接哪种条件。</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span>
+​		<span class="hljs-tag">&lt;<span class="hljs-name">choose</span>&gt;</span>
+​				<span class="hljs-tag">&lt;<span class="hljs-name">when</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"条件1"</span>&gt;</span> 
+​				<span class="hljs-tag">&lt;/<span class="hljs-name">when</span>&gt;</span>
+​				<span class="hljs-tag">&lt;<span class="hljs-name">when</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"条件2"</span>&gt;</span> 
+​				<span class="hljs-tag">&lt;/<span class="hljs-name">when</span>&gt;</span>
+​			<span class="hljs-tag">&lt;<span class="hljs-name">otherwise</span>&gt;</span>
+​		<span class="hljs-tag">&lt;/<span class="hljs-name">otherwise</span>&gt;</span>
+​	<span class="hljs-tag">&lt;/<span class="hljs-name">choose</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+<ol start="4">
+<li><set>用于维护 update 语句中的 set 子句，可以解决修改属性个数和种类不确定的问题，功能如下：<ul>
+<li>满足条件时， 会自动添加 set 关键字。</li>
+<li>会去除 set 子句中多余的逗号。</li>
+<li>不满足条件时, 不会生成 set 关键字。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>
+​		<span class="hljs-tag">&lt;<span class="hljs-name">set</span>&gt;</span>
+​		<span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"条件1"</span>&gt;</span>
+​		<span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+​		<span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">"条件2"</span>&gt;</span> 
+​		<span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+​		<span class="hljs-tag">&lt;/<span class="hljs-name">set</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span></code></pre>
+
+<ol start="5">
+<li><bind>用于对数据进行再加工，用于模糊查询。</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"selLike"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bind</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"uname"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"'%'+uname+'%'"</span>/&gt;</span>
+    select * from t_user2 where uname like #&#123;uname&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+<ol start="6">
+<li><foreach>用于在 SQL 语句中遍历集合参数，在 in 查询中使用</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">foreach</span> <span class="hljs-attr">collection</span>=<span class="hljs-string">""</span> <span class="hljs-attr">open</span>=<span class="hljs-string">""</span> <span class="hljs-attr">separator</span>=<span class="hljs-string">""</span> <span class="hljs-attr">close</span>=<span class="hljs-string">""</span> <span class="hljs-attr">item</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">foreach</span>&gt;</span></code></pre>
+
+<ul>
+<li>collection: 待遍历的集合。</li>
+<li>open: 设置开始符号。</li>
+<li>separator: 项目分隔符。</li>
+<li>close: 设置结束符号。</li>
+<li>item: 迭代变量。</li>
+</ul>
+<p>接口中代码：public List<User> findIn(List<Integer> list);</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"findIn"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"User"</span>&gt;</span>
+    select * from t_user2 where sid in
+    <span class="hljs-tag">&lt;<span class="hljs-name">foreach</span> <span class="hljs-attr">collection</span>=<span class="hljs-string">"list"</span> <span class="hljs-attr">open</span>=<span class="hljs-string">"("</span> <span class="hljs-attr">separator</span>=<span class="hljs-string">","</span> <span class="hljs-attr">close</span>=<span class="hljs-string">")"</span> <span class="hljs-attr">item</span>=<span class="hljs-string">"i"</span>&gt;</span>
+        #&#123;i&#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">foreach</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+<ol start="7">
+<li><sql>和<include>，<sql>用于提取 SQL 语句， <include>用于引用 SQL 语句。</li>
+</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sql</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span>&gt;</span>
+​  列名1,列名2,列名3,...
+​<span class="hljs-tag">&lt;/<span class="hljs-name">sql</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">""</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">""</span>&gt;</span>
+​  select 
+​<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">*</span>"**列名**<span class="hljs-attr">2</span>**"*/&gt;</span>
+ from ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Mybatis%E6%A1%86%E6%9E%B6/">Mybatis框架</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/20/Mybaits%E7%9A%84%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mybaits的框架学习总结三</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/18/Mybaits%E6%A1%86%E6%9E%B6%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/">
+                        <span class="hidden-mobile">Mybaits框架的学习总结一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"风流当歌","artist":"上河Lin / 回川组 / 人间诗话组/等","url":"/music/风流当歌.mp3","cover":"/img/feng.jpg"},{"name":"吹梦到西洲","artist":"黄诗扶/妖扬","url":"/music/吹梦到西洲.mp3","cover":"/img/chui.png"}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+<p id="hitokoto" style="font-size:20px,font-color:yellow">:D 获取中...</p>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto')
+      hitokoto.innerText = data.hitokoto
+      })
+      .catch(console.error)
+</script>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Mybaits的框架学习总结二&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/node_modules/live2d-widget-model-wanko/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
